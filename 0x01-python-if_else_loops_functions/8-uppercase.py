@@ -1,10 +1,16 @@
 #!/usr/bin/python3
-def uppercase(s):
-    """Print s in uppercase followed by a new line"""
-    result = 
-    for c in s:
-        if ord(a) <= ord(c) <= ord(z):
-            c = chr(ord(c) - 32)
-        result += c
-    print(result)
+def uppercase(str):
 
+    result = ""
+
+    for char in str:
+
+        if ord('a') <= ord(char) <= ord('z'):
+
+            result += chr(ord(char) - 32)
+
+        else:
+
+            result += char
+
+    print(result, end="\n")
