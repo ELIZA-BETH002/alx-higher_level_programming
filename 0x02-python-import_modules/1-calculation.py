@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+if __name__ == "__main__":
 # Assign values to a and b
 a = 10
 b = 5
