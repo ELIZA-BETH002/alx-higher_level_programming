@@ -11,4 +11,3 @@ result = add_0.add(a, b)
 
 # Print the formatted output
 print("{} + {} = {}".format(a, b, result))
-
