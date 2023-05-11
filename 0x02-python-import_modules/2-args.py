@@ -1,21 +1,24 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-import sys
 
-# Get the command-line arguments
-arguments = sys.argv[1:]  # Exclude the script name
+    """Print the number of and list of arguments."""
 
-# Print the number of arguments
-num_arguments = len(arguments)
-print("Number of argument(s):", num_arguments, end="")
+    import sys
 
-if num_arguments == 0:
-    print(".", end="\n\n")
-else:
-    print(":", end="\n\n")
+    count = len(sys.argv) - 1
 
-    # Print the list of arguments
-    for i, arg in enumerate(arguments, start=1):
-        print("{}: {}".format(i, arg))
+    if count == 0:
 
-    print()  # Add an extra new line after printing the arguments
+        print("0 arguments.")
+
+    elif count == 1:
+
+        print("1 argument:")
+
+    else:
+
+        print("{} arguments:".format(count))
+
+    for i in range(count):
+
+        print("{}: {}".format(i + 1, sys.argv[i + 1]))
