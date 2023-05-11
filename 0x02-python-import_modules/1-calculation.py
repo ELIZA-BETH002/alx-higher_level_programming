@@ -17,4 +17,3 @@ print("Sum: {}".format(sum_result))
 print("Difference: {}".format(diff_result))
 print("Product: {}".format(prod_result))
 print("Division: {}".format(div_result))
-
