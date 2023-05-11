@@ -9,4 +9,3 @@ result = sum(int(arg) for arg in arguments)
 
 # Print the result
 print(result)
-
