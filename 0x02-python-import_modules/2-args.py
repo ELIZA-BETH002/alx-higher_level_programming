@@ -18,4 +18,3 @@ else:
         print("{}: {}".format(i, arg))
 
     print()  # Add an extra new line after printing the arguments
-
