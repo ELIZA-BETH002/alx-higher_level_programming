@@ -1,6 +1,20 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+
 #include "lists.h"
 
+/**
 
+  * is_palindrome - Checks if a singly linked list is a palindrome
+
+  * @head: The head of the singly linked list
+
+  *
+
+  * Return: 0 if it is not a palindrome, 1 if it is a palindrome
+
+  */
 
 int is_palindrome(listint_t **head)
 
@@ -64,9 +78,7 @@ listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 
 {
 
-	listint_t *current = head;
-
-	unsigned int iter_times = 0;
+	listint_t *current = head;	unsigned int iter_times = 0;
 
 	if (head)
 
