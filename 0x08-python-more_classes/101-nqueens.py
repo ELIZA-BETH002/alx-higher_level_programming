@@ -8,126 +8,98 @@ on an nxn grid so that they are all in non-attacking positions
 
 """
 
-import sys
+from sys import argv
 
-def is_safe(board, row, col):
+if __name__ == "__main__":
 
-    # Check if it is safe to place a queen at board[row][col]
+    a = []
 
-    # Check the left side of the current column
+    if len(argv) != 2:
 
-    for i in range(col):
+        print("Usage: nqueens N")
 
-        if board[row][i] == 1:
+        exit(1)
 
-            return False
-
-    # Check the upper diagonal on the left side
-
-    i, j = row, col
-
-    while i >= 0 and j >= 0:
-
-        if board[i][j] == 1:
-
-            return False
-
-        i -= 1
-
-        j -= 1
-
-    # Check the lower diagonal on the left side
-
-    i, j = row, col
-
-    while i < len(board) and j >= 0:
-
-        if board[i][j] == 1:
-
-            return False
-
-        i += 1
-
-        j -= 1
-
-    return True
-
-def solve_nqueens(board, col, solutions):
-
-    # Base case: If all queens are placed, append the current solution
-
-    if col == len(board):
-
-        solution = []
-
-        for i in range(len(board)):
-
-            for j in range(len(board)):
-
-                if board[i][j] == 1:
-
-                    solution.append([i, j])
-
-        solutions.append(solution)
-
-        return
-
-    # Recursive case: Try placing a queen in each row of the current column
-
-    for i in range(len(board)):
-
-        if is_safe(board, i, col):
-
-            board[i][col] = 1
-
-            solve_nqueens(board, col + 1, solutions)
-
-            board[i][col] = 0
-
-def print_solutions(solutions):
-
-    for solution in solutions:
-
-        print(solution)
-
-def nqueens(n):
-
-    if not isinstance(n, int):
+    if argv[1].isdigit() is False:
 
         print("N must be a number")
 
-        sys.exit(1)
+        exit(1)
+
+    n = int(argv[1])
 
     if n < 4:
 
         print("N must be at least 4")
 
-        sys.exit(1)
+        exit(1)
 
-    board = [[0 for _ in range(n)] for _ in range(n)]
+    # initialize the answer list
 
-    solutions = []
+    for i in range(n):
 
-    solve_nqueens(board, 0, solutions)
+        a.append([i, None])
 
-    print_solutions(solutions)
+    def already_exists(y):
 
-if __name__ == "__main__":
+        """check that a queen does not already exist in that y value"""
 
-    if len(sys.argv) != 2:
+        for x in range(n):
 
-        print("Usage: nqueens N")
+            if y == a[x][1]:
 
-        sys.exit(1)
+                return True
 
-    try:
+        return False
 
-        n = int(sys.argv[1])
+    def reject(x, y):
 
-        nqueens(n)
+        """determines whether or not to reject the solution"""
 
-    except ValueError:
+        if (already_exists(y)):
 
-        print("N must be a number")
+            return False
 
-        sys.exit(1)
+        i = 0
+
+        while(i < x):
+
+            if abs(a[i][1] - y) == abs(i - x):
+
+                return False
+
+            i += 1
+
+        return True
+
+    def clear_a(x):
+
+        """clears the answers from the point of failure on"""
+
+        for i in range(x, n):
+
+            a[i][1] = None
+
+    def nqueens(x):
+
+        """recursive backtracking function to find the solution"""
+
+        for y in range(n):
+
+            clear_a(x)
+
+            if reject(x, y):
+
+                a[x][1] = y
+
+                if (x == n - 1):  # accepts the solution
+
+                    print(a)
+
+                else:
+
+                    nqueens(x + 1)  # moves on to next x value to continue
+
+    # start the recursive process at x = 0
+
+    nqueens(0)
