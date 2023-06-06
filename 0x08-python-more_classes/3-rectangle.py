@@ -1,25 +1,66 @@
 #!/usr/bin/python3
-"""Defines a Rectangle Class"""
+
+"""
+
+Module 2-rectangle
+
+Contains class Rectangle with private attribute width and height,
+
+and public area and perimeter methods
+
+"""
 
 class Rectangle:
 
-    # Private instance attribute: width
+    """
 
-    __width = None
+    Defines class rectangle with private attribute width and height
 
-    # Property def width(self): to retrieve it
+    Args:
+
+        width (int): width
+
+        height (int): height
+
+    Functions:
+
+        __init__(self, width, height)
+
+        width(self)
+
+        width(self, value)
+
+        height(self)
+
+        height(self, value)
+
+        area(self)
+
+        perimeter(self)
+
+    """
+
+    def __init__(self, width=0, height=0):
+
+        """ Initialize rectangles """
+
+        self.width = width
+
+        self.height = height
 
     @property
 
     def width(self):
 
-        return self.__width
+        """ Getter returns width """
 
-    # Property setter def width(self, value): to set it:
+        return self.__width
 
     @width.setter
 
     def width(self, value):
+
+        """ Setter sets width if int > 0 """
 
         if not isinstance(value, int):
 
@@ -31,23 +72,19 @@ class Rectangle:
 
         self.__width = value
 
-    # Private instance attribute: height
-
-    __height = None
-
-    # Property def height(self): to retrieve it
-
     @property
 
     def height(self):
 
-        return self.__height
+        """ Getter returns height """
 
-    # Property setter def height(self, value): to set it:
+        return self.__height
 
     @height.setter
 
     def height(self, value):
+
+        """ Setter sets height if int > 0 """
 
         if not isinstance(value, int):
 
@@ -59,42 +96,18 @@ class Rectangle:
 
         self.__height = value
 
-    # Instantiation with optional width and height: def __init__(self, width=0, height=0):
-
-    def __init__(self, width=0, height=0):
-
-        self.width = width
-
-        self.height = height
-
-    # Public instance method: def area(self): that returns the rectangle area
-
     def area(self):
 
-        return self.width * self.height
+        """ Return width * height """
 
-    # Public instance method: def perimeter(self): that returns the rectangle perimeter:
+        return self.__width * self.__height
 
     def perimeter(self):
 
-        if self.width == 0 or self.height == 0:
+        """ Return 2*width + 2*height (or return 0 if width or height is 0)"""
+
+        if self.__width == 0 or self.__height == 0:
 
             return 0
 
-        return 2 * (self.width + self.height)
-
-    # print() and str() should print the rectangle with the character #: (see example below)
-
-    # if width or height is equal to 0, return an empty string
-
-    def __str__(self):
-
-        if self.width == 0 or self.height == 0:
-
-            return ""
-
-        return "#" * self.width + "\n" * (self.height - 1) + "#" * self.width
-
-    def __repr__(self):
-
-        return "Rectangle(width={!r}, height={!r})".format(self.width, self.height)
+        return (2 * self.__width) + (2 * self.height)
