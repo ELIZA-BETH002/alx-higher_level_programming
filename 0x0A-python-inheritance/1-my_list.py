@@ -1,29 +1,23 @@
 #!/usr/bin/python3
 
-# This class inherits from the built-in `list` class and adds a
+"""
 
-# public instance method `print_sorted()` that prints the list,
+contains MyList class
 
-# but sorted (ascending sort).
+"""
 
 class MyList(list):
 
-    # Prints the list, but sorted (ascending sort).
+    """a subclass of list"""
+
+    def __init__(self):
+
+        """initializes the object"""
+
+        super().__init__()
 
     def print_sorted(self):
 
-        """
-
-        This method prints the list, but sorted (ascending sort).
-
-        Args:
-
-            self: The instance of the `MyList` class.
-
-        Returns:
-
-            None.
-
-        """
+        """prints the sorted list"""
 
         print(sorted(self))
