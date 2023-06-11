@@ -1,15 +1,29 @@
 #!/usr/bin/python3
 
+"""
+
+Contains the class MyInt
+
+"""
+
 class MyInt(int):
-    def __init__(self, value):
-        super().__init__(value)
 
-    # Override the == operator
+    """rebel version of an integer, perfect for opposite day!"""
+
+    def __new__(cls, *args, **kwargs):
+
+        """create a new instance of the class"""
+
+        return super(MyInt, cls).__new__(cls, *args, **kwargs)
+
     def __eq__(self, other):
-        # Invert the behavior of the original == operator
-        return super().__ne__(other)
 
-    # Override the != operator
+        """what was != is now =="""
+
+        return int(self) != other
+
     def __ne__(self, other):
-        # Invert the behavior of the original != operator
-        return super().__eq__(other)
+
+        """what was == is now !="""
+
+        return int(self) == other
