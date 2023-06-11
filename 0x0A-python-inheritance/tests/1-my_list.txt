@@ -1,19 +1,19 @@
-MyList = __import__('1-my_list').MyList
+# Tests for MyList class
 
-my_list = MyList()
+def test_empty_list():
 
-my_list.append(1)
+    list = MyList()
 
-my_list.append(4)
+    assert list.print_sorted() == []
 
-my_list.append(2)
+def test_list_with_one_element():
 
-my_list.append(3)
+    list = MyList([1])
 
-my_list.append(5)
+    assert list.print_sorted() == [1]
 
-print(my_list)
+def test_list_with_multiple_elements():
 
-my_list.print_sorted()
+    list = MyList([1, 4, 2, 3, 5])
 
-print(my_list)
+    assert list.print_sorted() == [1, 2, 3, 4, 5]
