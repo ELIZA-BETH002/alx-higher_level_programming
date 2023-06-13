@@ -1,0 +1,19 @@
+# Tests for MyList class
+
+def test_empty_list():
+
+    list = MyList()
+
+    assert list.print_sorted() == []
+
+def test_list_with_one_element():
+
+    list = MyList([1])
+
+    assert list.print_sorted() == [1]
+
+def test_list_with_multiple_elements():
+
+    list = MyList([1, 4, 2, 3, 5])
+
+    assert list.print_sorted() == [1, 2, 3, 4, 5]
